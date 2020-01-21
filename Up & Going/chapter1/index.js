@@ -17,14 +17,20 @@ function formating (price) {
 let subtotal = 0; 
 let count = 0
 
-while (subtotal + P_PRICE + A_PRICE <= THRESHOLD && subtotal + P_PRICE + A_PRICE < MONEY) {
-    count = count + 1; 
-    subtotal = subtotal + P_PRICE + A_PRICE; 
-    console.log(`Compra ${count}, subtotal de $/${subtotal}`);   
+if (MONEY < P_PRICE) {
+    console.log('No money, no phone');
+} else {
+    while (subtotal + P_PRICE + A_PRICE <= THRESHOLD && subtotal + P_PRICE + A_PRICE < MONEY) {
+        count = count + 1; 
+        subtotal = subtotal + P_PRICE + A_PRICE; 
+        console.log(`Compra ${count}, subtotal de $/${subtotal}`);   
+    }
+
+    let w_taxes = calcTax(subtotal);
+    formating(w_taxes);
 }
 
-let w_taxes = calcTax(subtotal);
-formating(w_taxes);
+
 
 
 
